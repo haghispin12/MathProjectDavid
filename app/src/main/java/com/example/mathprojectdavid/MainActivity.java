@@ -1,6 +1,8 @@
 package com.example.mathprojectdavid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
@@ -31,15 +33,31 @@ public class MainActivity extends AppCompatActivity {
 
     private Button show;
 
-    private Exercize exercize;
+    //private Exercize exercize;
 
+    MainViewModel viewModelMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        exercize = new Exercize();
+        //exercize = new Exercize();
         initView();
+        //create object VM
+        viewModelMain = new ViewModelProvider(this).get(MainViewModel.class);
+        viewModelMain.vnum1.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                num1.setText(integer+"");
+            }
+        });
+        viewModelMain.vnum2.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                num2.setText(integer+"");
+            }
+        });
+
     }
 
     public void initView(){
@@ -56,31 +74,35 @@ public class MainActivity extends AppCompatActivity {
         Etgar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                exercize.generateNumEtgar();
-                updateView();
+                //call etgar by vm object
+                viewModelMain.vEtgar();
+                //exercize.generateNumEtgar();
+                //updateView();
             }
         });
 
         kefel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                exercize.generateNumstill20();
-                updateView();
+                viewModelMain.vKefel();
+                //exercize.generateNumstill20();
+                //updateView();
             }
         });
 
         loach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                exercize.generateNumloach();
-                updateView();
+                viewModelMain.vloach();
+                //exercize.generateNumloach();
+                //updateView();
             }
         });
 
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean b = exercize.checkAnswer(answer.getText().toString());
+                boolean b = viewModelMain.exercize.checkAnswer(answer.getText().toString());
                 if(b)
                     Toast.makeText(MainActivity.this, "success", Toast.LENGTH_LONG).show();
                 else
@@ -109,10 +131,11 @@ public class MainActivity extends AppCompatActivity {
     /**
      * update the text of num 1 and 2
      */
-    public void updateView(){
-        num1.setText(exercize.getNum3()+"");
-        num2.setText(exercize.getNum4()+"");
-    }
+
+
+
+
+
 
 
 
