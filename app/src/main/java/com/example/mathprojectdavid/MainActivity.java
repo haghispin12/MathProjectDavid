@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
     private Button show;
 
+    private Button rate;
+
+
+
     //private Exercize exercize;
 
     MainViewModel viewModelMain;
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         });
         Intent intent = getIntent();
         String UserName = intent.getStringExtra("UserName");
+        Toast.makeText(MainActivity.this, "glad you back ;) " + UserName, Toast.LENGTH_LONG).show();
 
     }
 
@@ -73,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         check = findViewById(R.id.check);
         save = findViewById(R.id.save);
         show = findViewById(R.id.show);
+        rate = findViewById(R.id.rate);
 
         Etgar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +129,14 @@ public class MainActivity extends AppCompatActivity {
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+            }
+        });
+
+        rate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(this, RateActivity.class);
 
             }
         });

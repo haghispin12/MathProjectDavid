@@ -24,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         initview();
 
 
+
+
     }
 
     public void initview(){

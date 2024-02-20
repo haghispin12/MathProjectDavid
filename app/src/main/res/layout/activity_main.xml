@@ -9,6 +9,18 @@
     tools:ignore="ExtraText">
 
 
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rate"
+        android:textStyle="italic"
+        android:id="@+id/rate"
+        />
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -121,6 +133,9 @@
             android:layout_height="0dp"
             android:text="show all users"
             android:layout_weight="1"/>
+
+
+
 
 
 </LinearLayout>
