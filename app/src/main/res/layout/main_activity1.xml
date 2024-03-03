@@ -95,7 +95,7 @@
             android:textSize="30dp"
             android:background="@android:color/holo_orange_light"
             android:layout_marginBottom="10dp"/>
-            <EditText
+        <EditText
             android:id="@+id/answer"
             android:layout_width="100dp"
             android:layout_height="0dp"
@@ -117,22 +117,22 @@
 
 
 
-        <Button
-            android:id="@+id/save"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="save"
-            android:textStyle="italic"
-            android:textColor="@android:color/holo_blue_light"
-            android:backgroundTint="@android:color/holo_red_dark"/>
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="save"
+        android:textStyle="italic"
+        android:textColor="@android:color/holo_blue_light"
+        android:backgroundTint="@android:color/holo_red_dark"/>
 
-        <Button
-            android:id="@+id/show"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:text="show all users"
-            android:layout_weight="1"/>
+    <Button
+        android:id="@+id/show"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="show all users"
+        android:layout_weight="1"/>
 
 
 

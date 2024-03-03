@@ -1,5 +1,9 @@
 package com.example.mathprojectdavid;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -36,7 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
     private Button rate;
 
-
+    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    int myrate = result.getData().getIntExtra("rate", -1);
+                    Toast.makeText(MainActivity.this, myrate+" ",Toast.LENGTH_LONG).show();
+                }
+            });
 
     //private Exercize exercize;
 
@@ -45,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity1);
         //exercize = new Exercize();
         initView();
         //create object VM
@@ -136,7 +147,8 @@ public class MainActivity extends AppCompatActivity {
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, RateActivity.class);
+                Intent intent = new Intent(MainActivity.this, RateActivity.class);
+                activityResultLauncher.launch(intent);
 
             }
         });
