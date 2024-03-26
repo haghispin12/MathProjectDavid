@@ -11,10 +11,13 @@ public class MainViewModel extends ViewModel {
 
     Exercize exercize;
 
+    User user;
+
     public MainViewModel(){
         vnum1 = new MutableLiveData<>();
         vnum2 = new MutableLiveData<>();
         exercize = new Exercize();
+        user = new User();
     }
 
     //create action that call etgar action
@@ -37,5 +40,9 @@ public class MainViewModel extends ViewModel {
     }
     public boolean vcheck(String s){
         return exercize.checkAnswer(s);
+    }
+
+    public void updateName(String s){
+        user.setName(s);
     }
 }

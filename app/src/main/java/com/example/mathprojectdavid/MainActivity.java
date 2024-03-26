@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String UserName = intent.getStringExtra("UserName");
         Toast.makeText(MainActivity.this, "glad you back ;) " + UserName, Toast.LENGTH_LONG).show();
+        viewModelMain.updateName(UserName);
 
     }
 
@@ -149,9 +151,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RateActivity.class);
                 activityResultLauncher.launch(intent);
+                SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                String s1 = sh.getString("name", "");
+
+
 
             }
         });
+
 
     }
 
