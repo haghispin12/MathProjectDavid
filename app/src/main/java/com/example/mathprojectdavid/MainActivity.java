@@ -21,7 +21,7 @@ import java.lang.invoke.MethodHandles;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private Button Etgar;
+    private Button Etgar;///////
 
     private Button kefel;
 
