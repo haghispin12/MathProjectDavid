@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -142,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+                trans.add(R.id.f)
+
 
             }
         });
