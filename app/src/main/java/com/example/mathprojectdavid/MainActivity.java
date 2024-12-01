@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.add(R.id.f)
+                //trans.add(R.id.f)
 
 
             }
