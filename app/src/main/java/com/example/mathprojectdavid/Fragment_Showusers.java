@@ -37,6 +37,17 @@ public class Fragment_Showusers extends Fragment {
 
     private Uri uri;
 
+    ActivityResultLauncher<Intent> startcamera = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if(result.getResultCode()==RESULT_OK){
+
+                        Pic.setImageURI(uri);
+
+                    }
+                }
+            });
 
 
     @Override
@@ -55,17 +66,7 @@ public class Fragment_Showusers extends Fragment {
         addapictuer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityResultLauncher<Intent> startcamera = registerForActivityResult(
-                        new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                            @Override
-                            public void onActivityResult(ActivityResult result) {
-                                if(result.getResultCode()==RESULT_OK){
 
-                                    Pic.setImageURI(uri);
-
-                                }
-                            }
-                        });
                 ContentValues values = new ContentValues();
                     values.put(MediaStore.Images.Media.TITLE, "New Picture");
                     values.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
