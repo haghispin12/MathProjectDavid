@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MathProjectDavid"
         tools:targetApi="31">
         <activity
+            android:name=".show_fruits"
+            android:exported="false" />
+        <activity
             android:name=".Fruit"
             android:exported="false" />
         <activity

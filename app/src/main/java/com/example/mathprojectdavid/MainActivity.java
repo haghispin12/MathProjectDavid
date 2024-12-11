@@ -143,9 +143,12 @@ public class MainActivity extends AppCompatActivity {
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.add(R.id.frameLayout, new Fragment_Showusers());
-                trans.commit();
+//                FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+//                trans.add(R.id.frameLayout, new Fragment_Showusers());
+//                trans.commit();
+                Intent intent = new Intent(MainActivity.this, show_fruits.class);
+                activityResultLauncher.launch(intent);
+
 
 
             }
@@ -156,8 +159,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RateActivity.class);
                 activityResultLauncher.launch(intent);
-                SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-                String s1 = sh.getString("name", "");
+
 
 
 
