@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 boolean b = viewModelMain.exercize.checkAnswer(answer.getText().toString());
                 if(b)
                     Toast.makeText(MainActivity.this, "success", Toast.LENGTH_LONG).show();
+                    viewModelMain.getUser().setScore(viewModelMain.getType());
                 else
                     Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_LONG).show();
             }

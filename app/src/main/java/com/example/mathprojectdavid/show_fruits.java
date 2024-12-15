@@ -19,7 +19,7 @@ public class show_fruits extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_show_fruits);
+        setContentView(R.layout.fragment__showusers);
         initView();
 
 
