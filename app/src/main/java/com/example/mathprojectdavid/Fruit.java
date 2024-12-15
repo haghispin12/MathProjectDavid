@@ -5,9 +5,9 @@ public class Fruit {
     private int weight;
     private int imageDrwable;
 
-    public Fruit(String name, int weight, int imageDrwable){
+    public Fruit(String name, int imageDrwable){
         this.name=name;
-        this.weight=weight;
+        //this.weight=weight;
         this.imageDrwable=imageDrwable;
     }
 

@@ -38,7 +38,7 @@ public class Fragment_Showusers extends Fragment {
 
     private Uri uri;
 
-    MainViewModel viewModelMain
+    MainViewModel viewModelMain;
 
     ActivityResultLauncher<Intent> startcamera = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -97,7 +97,7 @@ public class Fragment_Showusers extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment__showusers, container, false);
         initView(view);
-        viewModelMain = new ViewModelProvider(this).get(MainViewModel.class);
+        viewModelMain = new ViewModelProvider(getActivity()).get(MainViewModel.class);
         this.score.setText(viewModelMain.getUser().getScore());
         return view;
     }
