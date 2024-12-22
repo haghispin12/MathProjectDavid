@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onActivityResult(ActivityResult result) {
                     int myrate = result.getData().getIntExtra("rate", -1);
                     Toast.makeText(MainActivity.this, myrate+" ",Toast.LENGTH_LONG).show();
+                    viewModelMain.getUser().setRate(myrate);
                 }
             });
 
@@ -144,11 +145,11 @@ public class MainActivity extends AppCompatActivity {
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-//                trans.add(R.id.frameLayout, new Fragment_Showusers());
-//                trans.commit();
-                Intent intent = new Intent(MainActivity.this, show_fruits.class);
-                activityResultLauncher.launch(intent);
+                FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+                trans.add(R.id.frameLayout, new Fragment_Showusers());
+                trans.commit();
+//                Intent intent = new Intent(MainActivity.this, Fragment_Showusers.class);
+//                activityResultLauncher.launch(intent);
 
 
 

@@ -30,6 +30,7 @@ public class RateActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent();
                 intent.putExtra("rate", seekBar.getProgress());
                 setResult(RESULT_OK,intent);

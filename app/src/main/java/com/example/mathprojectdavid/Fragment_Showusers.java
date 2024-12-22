@@ -34,6 +34,8 @@ public class Fragment_Showusers extends Fragment {
 
     private TextView rate;
 
+    private Button addUser;
+
     ImageView Pic;
 
     private Uri uri;
@@ -65,6 +67,7 @@ public class Fragment_Showusers extends Fragment {
         score = view.findViewById(R.id.score);
         rate = view.findViewById(R.id.rate);
         Pic = view.findViewById(R.id.imageView2);
+        addUser = view.findViewById(R.id.adduser);
 
         addapictuer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +83,16 @@ public class Fragment_Showusers extends Fragment {
 
             }
 
+        });
+
+        addUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(getActivity()!=null){
+                    long id = viewModelMain.dbAddUser(getActivity());
+                    Toast.makeText(getActivity(), "insert get row id"+id, Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
     }
@@ -98,7 +111,9 @@ public class Fragment_Showusers extends Fragment {
         View view= inflater.inflate(R.layout.fragment__showusers, container, false);
         initView(view);
         viewModelMain = new ViewModelProvider(getActivity()).get(MainViewModel.class);
-        this.score.setText(viewModelMain.getUser().getScore());
+        this.score.setText("your score:"+viewModelMain.getUser().getScore()+"");
+        this.name.setText("your name: "+viewModelMain.getUser().getName());
+        this.rate.setText("rate:"+viewModelMain.getUser().getRate());
         return view;
     }
 

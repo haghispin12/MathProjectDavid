@@ -7,7 +7,7 @@ public class User {
     private int score;
     private int rate;
     private Long id;
-    Uri uri;
+    private Uri uri;
 
     public Long getId() {
         return id;

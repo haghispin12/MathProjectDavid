@@ -1,10 +1,15 @@
 package com.example.mathprojectdavid;
 
+import android.content.Context;
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.lang.reflect.Type;
 import java.net.Proxy;
+
+import DBHekper.DBHelper;
 
 public class MainViewModel extends ViewModel {
 
@@ -60,5 +65,12 @@ public class MainViewModel extends ViewModel {
 
     public User getUser() {
         return user;
+    }
+
+    public long dbAddUser(Context context){
+        DBHelper dbHelper = new DBHelper(context);
+        long id = dbHelper.insert(user,context);
+        Log.d("david", id+"");
+        return id;
     }
 }
