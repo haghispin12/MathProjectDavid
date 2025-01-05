@@ -1,5 +1,6 @@
 package com.example.mathprojectdavid;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 public class User {
@@ -8,6 +9,7 @@ public class User {
     private int rate;
     private Long id;
     private Uri uri;
+    private Bitmap bitmap;
 
     public Long getId() {
         return id;
@@ -41,9 +43,13 @@ public class User {
         this.score += score;
     }
 
-    public User(String name, int score) {
+    public User(String name, int score,int rate, Long id, Bitmap bitmap) {
         this.name = name;
         this.score = score;
+        this.rate = rate;
+        this.id = id;
+        this.bitmap = bitmap;
+
     }
     public User(){}
 
@@ -55,5 +61,7 @@ public class User {
         this.rate = rate;
     }
 
-
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
 }

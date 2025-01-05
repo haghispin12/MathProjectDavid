@@ -12,6 +12,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.provider.MediaStore;
@@ -23,6 +24,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class Fragment_Showusers extends Fragment {
 
@@ -49,6 +52,7 @@ public class Fragment_Showusers extends Fragment {
                     if(result.getResultCode()==RESULT_OK){
 
                         Pic.setImageURI(uri);
+                        viewModelMain.getUser().setUri(uri);
 
                     }
                 }
@@ -59,6 +63,12 @@ public class Fragment_Showusers extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        viewModelMain.users.observe(this, new Observer<ArrayList<User>>() {
+            @Override
+            public void onChanged(ArrayList<User> users) {
+                int t = 10;
+            }
+        });
 
     }
     public void initView(View view){

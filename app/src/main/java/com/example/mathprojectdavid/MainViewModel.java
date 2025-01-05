@@ -1,6 +1,7 @@
 package com.example.mathprojectdavid;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -8,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 import java.lang.reflect.Type;
 import java.net.Proxy;
+import java.util.ArrayList;
 
 import DBHekper.DBHelper;
 
@@ -21,6 +23,12 @@ public class MainViewModel extends ViewModel {
     int Type;
 
     User user;
+
+    MutableLiveData<ArrayList<User>> users = new MutableLiveData<ArrayList<User>>();
+
+    public void setUsers(MutableLiveData<ArrayList<User>> users) {
+        this.users = users;
+    }
 
     public MainViewModel(){
         vnum1 = new MutableLiveData<>();
@@ -72,5 +80,10 @@ public class MainViewModel extends ViewModel {
         long id = dbHelper.insert(user,context);
         Log.d("david", id+"");
         return id;
+    }
+
+    public void getUsersDB(Context context){
+        DBHelper dbHelper = new DBHelper(context);
+        users.setValue(dbHelper.selectAll());
     }
 }
