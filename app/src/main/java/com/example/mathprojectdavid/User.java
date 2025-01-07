@@ -62,6 +62,6 @@ public class User {
     }
 
     public Bitmap getBitmap() {
-        return bitmap;
+        return this.bitmap;
     }
 }

@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -45,6 +46,8 @@ public class Fragment_Showusers extends Fragment {
 
     MainViewModel viewModelMain;
 
+    private RecyclerView rcUsers;
+
     ActivityResultLauncher<Intent> startcamera = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -63,12 +66,8 @@ public class Fragment_Showusers extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        viewModelMain.users.observe(this, new Observer<ArrayList<User>>() {
-            @Override
-            public void onChanged(ArrayList<User> users) {
-                int t = 10;
-            }
-        });
+
+
 
     }
     public void initView(View view){
@@ -78,6 +77,7 @@ public class Fragment_Showusers extends Fragment {
         rate = view.findViewById(R.id.rate);
         Pic = view.findViewById(R.id.imageView2);
         addUser = view.findViewById(R.id.adduser);
+        rcUsers = view.findViewById(R.id.rcUsers);
 
         addapictuer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,8 +124,23 @@ public class Fragment_Showusers extends Fragment {
         this.score.setText("your score:"+viewModelMain.getUser().getScore()+"");
         this.name.setText("your name: "+viewModelMain.getUser().getName());
         this.rate.setText("rate:"+viewModelMain.getUser().getRate());
+
+        viewModelMain.users.observe(getActivity(), new Observer<ArrayList<User>>() {
+            @Override
+            public void onChanged(ArrayList<User> users) {
+                UsersAdapter usersAdapter = new UsersAdapter(users, new UsersAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(User item) {
+                        Toast.makeText(Fragment_Showusers.this, item.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
         return view;
     }
+
+
 
 
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder>{
 
     public interface OnItemClickListener{
-        void onItemClick(Fruit item);
+        void onItemClick(User item);
     }
 
     private ArrayList<User> users;
@@ -27,14 +27,16 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     @NonNull
     @Override
     public UsersAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position ){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment__showusers,parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyFruitsAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UsersAdapter.MyViewHolder holder, int position) {
         holder.bind(users.get(position), listener);
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -56,7 +58,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         public void bind(final User item, final OnItemClickListener listener){
             namedb.setText(item.getName());
             scoredb.setText(item.getScore());
-            imagedb.setImageResource(item.getBitmap());
+            imagedb.setImageBitmap(item.getBitmap());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

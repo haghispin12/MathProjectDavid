@@ -78,7 +78,7 @@ public class MainViewModel extends ViewModel {
     public long dbAddUser(Context context){
         DBHelper dbHelper = new DBHelper(context);
         long id = dbHelper.insert(user,context);
-        Log.d("david", id+"");
+        Log.d("david1", id+"");
         return id;
     }
 
