@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
@@ -120,22 +121,29 @@ public class Fragment_Showusers extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment__showusers, container, false);
         initView(view);
-        viewModelMain = new ViewModelProvider(getActivity()).get(MainViewModel.class);
+        viewModelMain = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         this.score.setText("your score:"+viewModelMain.getUser().getScore()+"");
         this.name.setText("your name: "+viewModelMain.getUser().getName());
         this.rate.setText("rate:"+viewModelMain.getUser().getRate());
 
-        viewModelMain.users.observe(getActivity(), new Observer<ArrayList<User>>() {
+        viewModelMain.users.observe(requireActivity(), new Observer<ArrayList<User>>() {
             @Override
             public void onChanged(ArrayList<User> users) {
+                int n =10;
                 UsersAdapter usersAdapter = new UsersAdapter(users, new UsersAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(User item) {
-                        Toast.makeText(Fragment_Showusers.this, item.getName(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireActivity(), item.getName(), Toast.LENGTH_SHORT).show();
                     }
                 });
+                rcUsers.setLayoutManager(new LinearLayoutManager(requireActivity()));
+                rcUsers.setAdapter(usersAdapter);
+                rcUsers.setHasFixedSize(true);
             }
         });
+
+        viewModelMain.getUsersDB(requireActivity());
+
 
         return view;
     }
