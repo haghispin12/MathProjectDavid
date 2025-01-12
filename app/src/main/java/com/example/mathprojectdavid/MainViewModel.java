@@ -24,6 +24,8 @@ public class MainViewModel extends ViewModel {
 
     User user;
 
+    User currentUser;
+
     MutableLiveData<ArrayList<User>> users = new MutableLiveData<ArrayList<User>>();
 
     public void setUsers(MutableLiveData<ArrayList<User>> users) {
@@ -75,12 +77,35 @@ public class MainViewModel extends ViewModel {
         return user;
     }
 
-    public long
-    dbAddUser(Context context){
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public long dbAddUser(Context context){
         DBHelper dbHelper = new DBHelper(context);
         long id = dbHelper.insert(user,context);
         Log.d("david1", id+"");
+        getUsersDB(context);
         return id;
+    }
+
+
+    public void dbUpdateUser(Context context){
+        DBHelper dbHelper = new DBHelper(context);
+        dbHelper.update(currentUser);
+        getUsersDB(context);
+
+    }
+
+    public void dbDeleteUser(Context context){
+        DBHelper dbHelper = new DBHelper(context);
+        dbHelper.deleteById(currentUser.getId());
+        getUsersDB(context);
     }
 
     public void getUsersDB(Context context){

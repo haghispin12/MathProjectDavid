@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //call etgar by vm object
                 viewModelMain.vEtgar();
+                answer.setText("");
                 //exercize.generateNumEtgar();
                 //updateView();
             }
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 viewModelMain.vKefel();
+                answer.setText("");
                 //exercize.generateNumstill20();
                 //updateView();
             }
@@ -118,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 viewModelMain.vloach();
+                answer.setText("");
                 //exercize.generateNumloach();
                 //updateView();
             }

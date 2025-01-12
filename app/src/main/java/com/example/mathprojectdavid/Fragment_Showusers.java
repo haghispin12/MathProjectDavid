@@ -2,7 +2,9 @@ package com.example.mathprojectdavid;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,6 +23,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,7 +36,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Fragment_Showusers extends Fragment {
+public class Fragment_Showusers extends Fragment implements MenuProvider {
 
     private Button addapictuer;
 
@@ -41,13 +48,17 @@ public class Fragment_Showusers extends Fragment {
 
     private Button addUser;
 
-    ImageView Pic;
+    private ImageView Pic;
 
     private Uri uri;
 
     MainViewModel viewModelMain;
 
     private RecyclerView rcUsers;
+
+    private MenuItem itemDelete;
+
+    private User currentUser;
 
     ActivityResultLauncher<Intent> startcamera = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -61,6 +72,7 @@ public class Fragment_Showusers extends Fragment {
                     }
                 }
             });
+
 
 
     @Override
@@ -126,6 +138,8 @@ public class Fragment_Showusers extends Fragment {
         this.name.setText("your name: "+viewModelMain.getUser().getName());
         this.rate.setText("rate:"+viewModelMain.getUser().getRate());
 
+        requireActivity().addMenuProvider(this);
+
         viewModelMain.users.observe(requireActivity(), new Observer<ArrayList<User>>() {
             @Override
             public void onChanged(ArrayList<User> users) {
@@ -134,6 +148,14 @@ public class Fragment_Showusers extends Fragment {
                     @Override
                     public void onItemClick(User item) {
                         Toast.makeText(requireActivity(), item.getName(), Toast.LENGTH_SHORT).show();
+                        viewModelMain.currentUser = item;
+                        //User newUser = item;
+                        score.setText("your score:"+viewModelMain.getCurrentUser().getScore()+"");
+                        name.setText("your name: "+viewModelMain.getCurrentUser().getName());
+                        rate.setText("rate:"+viewModelMain.getCurrentUser().getRate());
+
+
+
                     }
                 });
                 rcUsers.setLayoutManager(new LinearLayoutManager(requireActivity()));
@@ -150,5 +172,46 @@ public class Fragment_Showusers extends Fragment {
 
 
 
+    @Override
+    public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+        menuInflater.inflate(R.menu.menu, menu);
+        itemDelete = menu.findItem(R.id.action_delete);
+        //itemDelete.setVisible(false);
+        super.onCreateOptionsMenu(menu, menuInflater);
 
+    }
+
+    public void openDeleteDialog(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(requireActivity());
+        alertDialog.setTitle("Delete");
+        alertDialog.setMessage("Delete this user?");
+        alertDialog.setCancelable(true);
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                viewModelMain.dbDeleteUser(requireActivity());
+                dialogInterface.dismiss();
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+    }
+
+    @Override
+    public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        switch (id){
+            case R.id.action_delete:
+                openDeleteDialog();
+            case R.id.action_edit:
+                viewModelMain.currentUser.setName(name.getText()+"");
+                viewModelMain.dbUpdateUser(requireActivity());
+                return true;
+        }
+        return false;
+    }
 }

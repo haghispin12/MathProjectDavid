@@ -27,7 +27,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     @NonNull
     @Override
     public UsersAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position ){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment__showusers,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user,parent,false);
         return new MyViewHolder(view);
     }
 
@@ -56,8 +56,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
             scoredb = itemView.findViewById(R.id.scoredb);
         }
         public void bind(final User item, final OnItemClickListener listener){
-            namedb.setText(item.getName());
-            scoredb.setText(item.getScore());
+            namedb.setText("user name: "+ item.getName());
+            scoredb.setText("user score:" + item.getScore()+" ");
             imagedb.setImageBitmap(item.getBitmap());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
