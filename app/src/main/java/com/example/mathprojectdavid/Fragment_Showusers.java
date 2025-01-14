@@ -199,6 +199,7 @@ public class Fragment_Showusers extends Fragment implements MenuProvider {
                 dialogInterface.dismiss();
             }
         });
+        alertDialog.show();
     }
 
     @Override
