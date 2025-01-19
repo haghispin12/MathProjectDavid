@@ -1,4 +1,4 @@
-package com.example.mathprojectdavid;
+package com.example.mathprojectdavid.MyProject;
 
 public class Fruit {
     private String name;

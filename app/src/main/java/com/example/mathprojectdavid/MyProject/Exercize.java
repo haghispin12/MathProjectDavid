@@ -1,4 +1,4 @@
-package com.example.mathprojectdavid;
+package com.example.mathprojectdavid.MyProject;
 
 import java.util.Random;
 

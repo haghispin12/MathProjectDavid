@@ -1,14 +1,11 @@
-package com.example.mathprojectdavid;
+package com.example.mathprojectdavid.MyProject;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.lang.reflect.Type;
-import java.net.Proxy;
 import java.util.ArrayList;
 
 import DBHekper.DBHelper;

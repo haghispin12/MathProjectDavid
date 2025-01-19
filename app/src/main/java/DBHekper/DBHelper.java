@@ -11,10 +11,9 @@ import android.net.Uri;
 import android.provider.MediaStore;
 
 import androidx.annotation.Nullable;
-import androidx.lifecycle.MutableLiveData;
 
 
-import com.example.mathprojectdavid.User;
+import com.example.mathprojectdavid.MyProject.User;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -1,6 +1,5 @@
-package com.example.mathprojectdavid;
+package com.example.mathprojectdavid.MyProject;
 
-import android.location.GnssAntennaInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mathprojectdavid.R;
 
 import java.util.ArrayList;
 

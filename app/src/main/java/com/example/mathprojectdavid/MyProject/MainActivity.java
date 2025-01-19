@@ -1,4 +1,4 @@
-package com.example.mathprojectdavid;
+package com.example.mathprojectdavid.MyProject;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.invoke.MethodHandles;
-import java.util.Random;
+import com.example.mathprojectdavid.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button Etgar;///////

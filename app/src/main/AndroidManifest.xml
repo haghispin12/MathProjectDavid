@@ -13,23 +13,29 @@
         android:theme="@style/Theme.MathProjectDavid"
         tools:targetApi="31">
         <activity
-            android:name=".show_fruits"
+            android:name="BugrutProject.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".Fruit"
+            android:name="BugrutProject.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyProject.show_fruits"
+            android:exported="false" />
+        <activity
+            android:name=".MyProject.Fruit"
             android:exported="false" />
         <activity
             android:name=".Fruits"
             android:exported="false" />
         <activity
-            android:name=".RateActivity"
+            android:name=".MyProject.RateActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".MyProject.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".MyProject.MainActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
