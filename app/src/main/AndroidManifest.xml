@@ -14,7 +14,13 @@
         tools:targetApi="31">
         <activity
             android:name="BugrutProject.LoginActivity"
-            android:exported="false" />
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name="BugrutProject.MainActivity"
             android:exported="false" />
@@ -23,9 +29,6 @@
             android:exported="false" />
         <activity
             android:name=".MyProject.Fruit"
-            android:exported="false" />
-        <activity
-            android:name=".Fruits"
             android:exported="false" />
         <activity
             android:name=".MyProject.RateActivity"
@@ -37,11 +40,7 @@
         <activity
             android:name=".MyProject.LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"
