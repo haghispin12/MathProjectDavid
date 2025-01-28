@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "216676116455",
+    "project_id": "beitmidrashproject-dfab2",
+    "storage_bucket": "beitmidrashproject-dfab2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216676116455:android:a3a0e4a1f5062fbb903f42",
+        "android_client_info": {
+          "package_name": "com.example.mathprojectdavid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx3n8E5nBn3-WWgEzoWwH-si3YtXTLbKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

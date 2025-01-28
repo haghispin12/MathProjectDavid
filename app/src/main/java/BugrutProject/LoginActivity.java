@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         String s2 = sh.getString("password", "");
         Username.setText(s1);
         password.setText(s2);
+
     }
 
     public void initView(){
