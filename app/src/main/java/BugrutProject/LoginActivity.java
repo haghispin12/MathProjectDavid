@@ -18,6 +18,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mathprojectdavid.R;
+import com.google.firebase.Firebase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -77,6 +79,11 @@ public class LoginActivity extends AppCompatActivity {
         String s2 = sh.getString("password", "");
         Username.setText(s1);
         password.setText(s2);
+
+        FirebaseFirestore fb = FirebaseFirestore.getInstance();
+        int n=10;
+       //FireStore// Firebase.getFirestore
+        //Firestore
 
     }
 
